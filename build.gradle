@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.0'
+}
+
+group = 'ua.terra'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    mainClassName = 'your.package.name.YourMainClass'
+}
+
+dependencies {
+    implementation 'org.openjfx:javafx-controls:17'
+    implementation 'org.openjfx:javafx-fxml:17'
+
+    implementation 'no.tornado:tornadofx:1.7.20'
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1"
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+jar {
+    from configurations.runtimeClasspath.collect(project.&zipTree)
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'ua.terra.Main'
+    }
+}
+
+tasks.withType(JavaCompile)*.options*.encoding = 'UTF-8'
