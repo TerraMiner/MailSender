@@ -17,6 +17,7 @@
 
 .img {
     -fx-effect: dropshadow(gaussian , rgba(255,255,255,0.5) , 1,1,0,1 );
+    -fx-image-rendering: optimize;
 }
 
 .separator .line {

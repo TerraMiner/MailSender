@@ -42,7 +42,7 @@ object Instance {
 
     val PrefWidth = 555.0
 
-    val PrefHeight = 700.0
+    val PrefHeight = 710.0
 
     val SmtpProps = Properties().also { prop ->
         prop.setProperty("mail.smtp.auth","true")
